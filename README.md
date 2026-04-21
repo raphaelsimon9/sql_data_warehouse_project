@@ -42,4 +42,5 @@ These insights empower stakeholders with key business metrics, enabling strategi
 - **Silver Layer**: Cleaned, and transformed data. This is where I handle nulls, fix data types, deduplicate, and join datasets. Data is trustworthy here.
 - **Gold Layer**: Business-ready, aggregated data. Optimized for reporting, dashboards, and analytics.
 
+
 ![Alt text](images/data_architecture.png)
