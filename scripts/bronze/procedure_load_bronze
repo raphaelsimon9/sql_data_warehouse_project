@@ -5,12 +5,10 @@
 
 	What This Script Does:
 		This stored procedure loads data into the bronze schema from .CSV files.
-		>>	It Truncates the bronze layer tables before loading the data using the 'BULK INSERT' command
-			to load data from external .CSV files.
+		>>	It Truncates the bronze layer tables before loading the data using the 'BULK INSERT' command to load data from external .CSV files.
 
 	Usage:
-		run script >>> EXEC bronze.load_bronze; <<< to execute the stored procedure load the data 
-		to the bronze layer
+		run script >>> EXEC bronze.load_bronze; <<< to execute the stored procedure load the data to the bronze layer
 */
 
 USE DataWareHouse;
