@@ -32,3 +32,14 @@ Develop SQL-based analytics to deliver detailed insights into:
 - Sales Trends**
 
 These insights empower stakeholders with key business metrics, enabling strategic decision-making
+
+---
+
+# Data Architecture
+
+### The data architecture will be based on the "Medallion Architecture"
+- **Bronze Layer**: This layer will hold the raw, untouched, unfiltered data so that there can be sort of historization for easy roll-backs when something breaks at the other 2 layers.
+- **Silver Layer**: Cleaned, and transformed data. This is where I handle nulls, fix data types, deduplicate, and join datasets. Data is trustworthy here.
+- **Gold Layer**: Business-ready, aggregated data. Optimized for reporting, dashboards, and analytics.
+
+
