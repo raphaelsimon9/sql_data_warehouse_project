@@ -11,6 +11,10 @@
 	Running this script will Truncate first, then Insert the cleaned data into the table.
 */
 
+USE DataWarehouse
+
+GO
+
 -- Inserting the cleaned data into the 'Customer Info' table of the Silver Schema
 TRUNCATE TABLE silver.crm_cust_info;
 INSERT INTO silver.crm_cust_info
@@ -50,3 +54,6 @@ FROM
 	WHERE cst_id IS NOT NULL
 	)t
 WHERE	rnk = 1;	-- Selecting the most recent record for each customer
+
+
+SELECT	TOP 100 *	FROM	silver.crm_cust_info;
