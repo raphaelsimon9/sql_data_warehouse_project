@@ -16,6 +16,7 @@ USE DataWareHouse;
 GO
 
 -- Inserting the cleaned data into the 'Product Info' table of the Silver Schema
+TRUNCATE TABLE silver.crm_prd_info;
 INSERT INTO	silver.crm_prd_info
 (
 	prd_id
