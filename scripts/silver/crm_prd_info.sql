@@ -1,0 +1,49 @@
+/*
+	===============================================================
+	DML Script For Inserting Cleaned Data Into silver.crm_prd_info
+	===============================================================
+
+	What This Script Does:
+		It inserts cleaned and standardized product info data from the bronze layer into silver.crm_prd_info.
+		
+	Ensure you have proper backups before attempting to run this script.
+
+	Running this script will Truncate first, then Insert the cleaned data into the table.
+*/
+
+USE DataWareHouse;
+
+GO
+
+-- Inserting the cleaned data into the 'Product Info' table of the Silver Schema
+INSERT INTO	silver.crm_prd_info
+(
+	prd_id
+	,cat_id
+	,prd_key
+    ,prd_nm
+    ,prd_cost
+    ,prd_line
+    ,prd_start_dt
+    ,prd_end_dt
+)
+SELECT
+		prd_id
+		,REPLACE(SUBSTRING(prd_key, 1, 5), '-', '_') AS cat_id
+		,SUBSTRING(prd_key, 7, LEN(prd_key)) AS prd_key
+		,prd_nm
+		,ISNULL(prd_cost, 0) AS prd_cost -- Assign zero (0) to NULL values to aid with better calculations
+		,CASE	UPPER(TRIM(prd_line))
+			WHEN	'R' THEN	'Road'
+			WHEN	'M' THEN	'Mountain'
+			WHEN	'S' THEN	'Accessories'
+			WHEN	'T' THEN	'Touring'
+			ELSE	'Not Specified'
+		END	AS	prd_line -- Give descriptive values to the product line
+		,CAST (prd_start_dt AS DATE) AS prd_start_dt
+		,CAST (LEAD(prd_start_dt)	OVER(PARTITION BY	prd_key	ORDER BY	prd_start_dt) - 1 AS DATE) AS prd_end_dt -- Calculate the end date as 1 day before the next start date
+FROM	bronze.crm_prd_info;
+
+
+SELECT TOP 100 * FROM silver.crm_prd_info;
+
