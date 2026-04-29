@@ -4,12 +4,16 @@
 	===============================================================
 
 	What This Script Does:
-		It inserts cleaned and standardized customer info data from the bronze layer into silver.erp_loc_a101.
+		It inserts cleaned and standardized customer location data from the bronze layer into silver.erp_loc_a101.
 		
 	Ensure you have proper backups before attempting to run this script.
 
 	Running this script will Truncate first, then Insert the cleaned data into the table.
 */
+
+USE DataWareHouse;
+
+GO
 
 -- Inserting the cleaned data into the 'ERP Customer Location' table of the Silver Schema
 TRUNCATE TABLE silver.erp_loc_a101;
