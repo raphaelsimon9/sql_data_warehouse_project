@@ -1,10 +1,10 @@
 /*
-	===============================================================
+	===================================================================
 	DML Script For Inserting Cleaned Data Into silver.crm_sales_details
-	===============================================================
+	===================================================================
 
 	What This Script Does:
-		It inserts cleaned and standardized product info data from the bronze layer into silver.crm_sales_details.
+		It inserts cleaned and standardized sales_details data from the bronze layer into silver.crm_sales_details.
 		
 	Ensure you have proper backups before attempting to run this script.
 
