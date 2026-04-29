@@ -11,6 +11,10 @@
 	Running this script will Truncate first, then Insert the cleaned data into the table.
 */
 
+USE DataWareHouse;
+
+GO
+
 -- Inserting the cleaned data into the 'ERP Customer Info' table of the Silver Schema
 TRUNCATE TABLE silver.erp_cust_az12;
 INSERT INTO silver.erp_cust_az12
